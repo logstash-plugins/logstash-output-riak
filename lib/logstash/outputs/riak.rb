@@ -14,7 +14,8 @@ class LogStash::Outputs::Riak < LogStash::Outputs::Base
   # This can be a single host or
   # a Logstash hash of node/port pairs
   # e.g
-  # ["node1", "8098", "node2", "8098"]
+  # [source,ruby]
+  #     ["node1", "8098", "node2", "8098"]
   config :nodes, :validate => :hash, :default => {"localhost" =>  "8098"}
 
   # The protocol to use
@@ -40,9 +41,11 @@ class LogStash::Outputs::Riak < LogStash::Outputs::Base
   # Bucket properties (NYI)
   # Logstash hash of properties for the bucket
   # i.e.
-  # `bucket_props => ["r", "one", "w", "one", "dw", "one"]`
+  # [source,ruby]
+  #     `bucket_props => ["r", "one", "w", "one", "dw", "one"]`
   # or
-  # `bucket_props => ["n_val", "3"]`
+  # [source,ruby]
+  #     `bucket_props => ["n_val", "3"]`
   # Note that the Logstash config language cannot support
   # hash or array values
   # Properties will be passed as-is
@@ -51,7 +54,8 @@ class LogStash::Outputs::Riak < LogStash::Outputs::Base
   # Indices
   # Array of fields to add 2i on
   # e.g.
-  # `indices => ["source_host", "type"]
+  # [source,ruby]
+  #     `indices => ["source_host", "type"]
   # Off by default as not everyone runs eleveldb
   config :indices, :validate => :array
 
@@ -69,7 +73,9 @@ class LogStash::Outputs::Riak < LogStash::Outputs::Base
   # Logstash hash that maps to the riak-client options
   # here: https://github.com/basho/riak-ruby-client/wiki/Connecting-to-Riak
   # You'll likely want something like this:
+  #
   # `ssl_opts => ["pem", "/etc/riak.pem", "ca_path", "/usr/share/certificates"]
+  #
   # Per the riak client docs, the above sample options
   # will turn on SSL `VERIFY_PEER`
   config :ssl_opts, :validate => :hash
