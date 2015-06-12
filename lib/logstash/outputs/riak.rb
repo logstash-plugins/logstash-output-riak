@@ -2,10 +2,8 @@
 require "logstash/outputs/base"
 require "logstash/namespace"
 
-
 # Riak is a distributed k/v store from Basho.
 # It's based on the Dynamo model.
-
 class LogStash::Outputs::Riak < LogStash::Outputs::Base
   config_name "riak"
 
@@ -14,7 +12,10 @@ class LogStash::Outputs::Riak < LogStash::Outputs::Base
   # a Logstash hash of node/port pairs
   # e.g
   # [source,ruby]
-  #     ["node1", "8098", "node2", "8098"]
+  #     {
+  #         "node1" => "8098"
+  #         "node2" => "8098"
+  #     }
   config :nodes, :validate => :hash, :default => {"localhost" =>  "8098"}
 
   # The protocol to use
@@ -34,19 +35,21 @@ class LogStash::Outputs::Riak < LogStash::Outputs::Base
   # The event key name
   # variables are valid here.
   #
-  # Choose this carefully. Best to let riak decide....
+  # Choose this carefully. Best to let riak decide.
   config :key_name, :validate => :string
 
   # Bucket properties (NYI)
   # Logstash hash of properties for the bucket
   # i.e.
   # [source,ruby]
-  #     `bucket_props => ["r", "one", "w", "one", "dw", "one"]`
+  #     bucket_props => {
+  #         "r" => "one"
+  #         "w" => "one"
+  #         "dw", "one
+  #      }
   # or
   # [source,ruby]
-  #     `bucket_props => ["n_val", "3"]`
-  # Note that the Logstash config language cannot support
-  # hash or array values
+  #     bucket_props => { "n_val" => "3" }
   # Properties will be passed as-is
   config :bucket_props, :validate => :hash
 
@@ -73,7 +76,11 @@ class LogStash::Outputs::Riak < LogStash::Outputs::Base
   # here: https://github.com/basho/riak-ruby-client/wiki/Connecting-to-Riak
   # You'll likely want something like this:
   #
-  # `ssl_opts => ["pem", "/etc/riak.pem", "ca_path", "/usr/share/certificates"]
+  # [source, ruby]
+  #     ssl_opts => {
+  #        "pem" => "/etc/riak.pem"
+  #        "ca_path" => "/usr/share/certificates"
+  #     }
   #
   # Per the riak client docs, the above sample options
   # will turn on SSL `VERIFY_PEER`
