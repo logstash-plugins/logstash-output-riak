@@ -120,7 +120,7 @@ class LogStash::Outputs::Riak < LogStash::Outputs::Base
 
   public
   def receive(event)
-    return unless output?(event)
+    
     
     @bucket.each do |b|
       # setup our bucket(s)
