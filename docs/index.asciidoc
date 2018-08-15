@@ -74,8 +74,9 @@ i.e.
     bucket_props => {
         "r" => "one"
         "w" => "one"
-        "dw", "one
+        "dw", "one"
      }
+
 or
 [source,ruby]
     bucket_props => { "n_val" => "3" }
