@@ -1,5 +1,5 @@
 ## 3.0.5
-  - Fix formatting in doc for conversion to --asciidoctor [#tbd](https://github.com/logstash-plugins/logstash-output-riak/pull/tbd)
+  - Fix formatting in doc for conversion to --asciidoctor [#4](https://github.com/logstash-plugins/logstash-output-riak/pull/4)
 
 ## 3.0.4
   - Docs: Set the default_codec doc attribute.
