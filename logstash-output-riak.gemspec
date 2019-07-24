@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name            = 'logstash-output-riak'
-  s.version         = '3.0.4'
+  s.version         = '3.0.5'
   s.licenses        = ['Apache License (2.0)']
   s.summary         = "Writes events to the Riak distributed key/value store"
   s.description     = "This gem is a Logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program"
